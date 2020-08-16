@@ -14,9 +14,9 @@ class LoginController extends Controller
     public function postLogin(Request $req)
     {
         $login = [
-            'email'     => $req->email,
-            'password'  => $req->password,
-            'role'      => 1,
+            'name'     => $req->name,
+            'password' => $req->password,
+            'role'     => 1,
             'status'    => 1
         ];
         if (Auth::attempt($login)) {

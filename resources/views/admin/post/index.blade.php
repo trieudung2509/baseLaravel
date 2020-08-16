@@ -132,6 +132,7 @@
                                                     <th>Xử lý</th>
                                                     </tfoot>
                                                 </table>
+                                                {{$post->links()}}
                                                 <select class="" name="select_action">
                                                     <option value="0">Lựa chọn</option>
                                                     <option value="1">Xóa</option>
@@ -153,112 +154,62 @@
     <!-- /.content-wrapper -->
 @endsection
 @section('script')
-    <script type="text/javascript">
-        $(function () {
+{{--    <script type="text/javascript">--}}
+{{--        $(function () {--}}
+{{--            $("#datatable_post").DataTable();--}}
+{{--        });--}}
 
-            $("#datatable_post").DataTable();
-
-        });
-
-    </script>
+{{--    </script>--}}
     <script type='text/javascript'>
         $(document).ready(function(){
-
             $(".checkall").change(function(){
-
                 var checked = $(this).is(':checked');
-
                 if(checked){
-
                     $(".checkbox").each(function(){
-
                         $(this).prop("checked",true);
-
                     });
-
                 }else{
-
                     $(".checkbox").each(function(){
-
                         $(this).prop("checked",false);
-
                     });
-
                 }
-
             });
-
-
 
             $(".checkbox").click(function(){
-
                 if($(".checkbox").length == $(".checkbox:checked").length) {
-
                     $(".checkall").prop("checked", true);
-
                 } else {
-
                     $(".checkall").removeAttr("checked");
-
                 }
-
             });
-
         });
-
         $.ajaxSetup({
-
             headers: {
-
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
             }
-
         });
 
         $(document).on('click', '#status', function(){
-
             var id = $(this).data('id');
-
             $.post('{{ route('admin.post.status') }}', {id:id}, function(data){
-
                 if (data.status == 1)
-
                 {
-
                     $('#status'+id).html('<span class="label label-success">Hiện</span>');
-
                 } else {
-
                     $('#status'+id).html('<span class="label label-danger">Ẩn</span>');
-
                 }
-
             });
-
         });
-
         $(document).on('click', '#is_home', function(){
-
             var id = $(this).data('id');
-
             $.post('{{ route('admin.post.is_home') }}', {id:id}, function(data){
-
                 if (data.is_home == 1)
-
                 {
-
                     $('#is_home'+id).html('<span class="label label-success">Hiện</span>');
-
                 } else {
-
                     $('#is_home'+id).html('<span class="label label-danger">Ẩn</span>');
-
                 }
-
             });
-
         });
-
     </script>
 @endsection

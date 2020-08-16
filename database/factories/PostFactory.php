@@ -20,13 +20,14 @@ use Carbon\Carbon;
 $factory->define(Post::class, function (Faker $faker) {
     $position = $faker->unique()->numberBetween(1, 100000);
     $posts = Cate_post::all()->random()->id;
-    $today = Carbon::today();
+    $startday = strtotime(Carbon::today()->subDays(29));
+    $endtoday = strtotime(Carbon::today());
     return [
         'name_vi' => $faker->name,
         'name_en' => $faker->name,
         'slug_vi' => str_slug($faker->name),
         'slug_en' => str_slug($faker->name),
-        'image'   => public_path('backend/images/anhpost.jpg'),
+        'image'   => 'backend/images/anhpost.jpg',
         'cate_post_id' => $posts,
         'position'    => $position,
         'status'     => $faker->numberBetween(0,1),
@@ -36,7 +37,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'title_en'  => $faker->title,
         'description_vi' => $faker->title,
         'description_en' => $faker->title,
-        'created_at' => $faker->dateTimeBetween($today,strtotime('-6 days')),
-        'updated_at' => $faker->dateTimeBetween($today,strtotime('-6 days')),
+        'created_at' => mt_rand($startday,$endtoday),
+        'updated_at' => mt_rand($startday,$endtoday),
     ];
 });

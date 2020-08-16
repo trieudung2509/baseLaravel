@@ -78,4 +78,4 @@ Route::group(["prefix" => "admin", "middleware" => "IsAdmin"], function () {
     });
 });
 
-Route::get('/','Frontend\IndexController@index');
+Route::get('/','Frontend\IndexController@index')->name('frontend.index');

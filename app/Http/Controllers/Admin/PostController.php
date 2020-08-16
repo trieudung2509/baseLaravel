@@ -14,9 +14,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::all();
+        $post = Post::paginate(10);
         $data = Cate_post::select('id','name_vi','parent_id')->get()->toArray();
-
         return view('admin.post.index', compact('post', 'data'));
     }
 
@@ -139,7 +138,7 @@ class PostController extends Controller
                 $pro = $pro->orWhere('cate_post_id',$dt->id);// bài viết có id của danh muc cha cấp 2.
             }
             session()->forget('id');//xóa session;
-        })->get();
+        })->paginate(10);
         return view('admin.post.search', compact('post', 'data', 'id_cate_post'));
     }
 

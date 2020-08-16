@@ -8,6 +8,7 @@
             </div>
             <div class="pull-left info">
                 <p>Admin</p>
+                <a href="{{ route('frontend.index') }}"><i class="fa fa-eye" aria-hidden="true"></i> Xem trang chủ</a>
             </div>
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -16,7 +17,7 @@
             <!-- ==== Recommended place for admin menu items ==== -->
             <!-- ================================================ -->
             <li class="{{ Request::is('admin') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li class="{{ Request::is('admin/cate_post') ? 'active' : '' }}"><a href="{{ route('admin.cate_post.home') }}"><i class="fa fa-group"></i> <span>Danh mục bài viết</span></a></li>
+            <li class="{{ Request::is('admin/cate_post') ? 'active' : '' }}"><a href="{{ route('admin.cate_post.home') }}"><i class="fa fa-newspaper-o"></i> <span>Danh mục bài viết</span></a></li>
             <li class="{{ Request::is('admin/post') ? 'active' : '' }}"><a href="{{ route('admin.post.index') }}"><i class="fa fa-group"></i> <span>Bài viết</span></a></li>
             <li class="{{ Request::is('admin/slide') ? 'active' : '' }}"><a href="{{ route('admin.slide.index') }}"><i class="fa fa-picture-o"></i> <span>Quản lý Ảnh + Slider</span></a></li>
             <li class="{{ Request::is('admin/intro') ? 'active' : '' }}"><a href="{{ route('admin.intro.index') }}"><i class="fa fa-file-text"></i> <span>Quản lý giới thiệu</span></a></li>
